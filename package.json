@@ -23,6 +23,8 @@
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20",
     "punycode": "^2.3.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "twilio": "^3.83.0"
   }
 }
