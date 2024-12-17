@@ -54,10 +54,10 @@ app.use('/api/v1/summary', verifyJWT,)
 
 // app.use('/api/v1/products')
 
-// mongoose.connect(connectionString).then(() => {
+mongoose.connect(connectionString).then(() => {
     app.listen(port, () => {
         console.log("server running on port : " + port)
     })
-// }).catch((err) => {
-//     console.log(err.message)
-// })
+}).catch((err) => {
+    console.log(err.message)
+})
