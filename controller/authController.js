@@ -63,7 +63,7 @@ exports.verifyotp = async (req, res) => {
 
 exports.sendOtp = async (req, res) => {
     try {
-        const { email } = req.query;
+      const email = req.query.email || req.body.email || req.headers['email'];
         if (!email) return res.status(400).json({ message: 'email required' })
         const otp = 4040
         const found = await otpModel.findOne({ userid: email })
