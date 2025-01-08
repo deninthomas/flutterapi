@@ -40,6 +40,7 @@ exports.login = async (req, res) => {
         const accessToken = jwt.createAccessToken(user._id)
         const refreshToken = jwt.createRefreshToken(user._id)
         await userModel.findByIdAndUpdate(user._id, { $push: { refreshToken } })
+        console.log(`Login completed for user: ${email}`);
         res.status(200).json({ refreshToken, accessToken })
     } catch (error) {
         console.log(error)
