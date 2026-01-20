@@ -24,14 +24,14 @@ const port = process.env.PORT || 5000;
 const connectionString = process.env.DB_CONNECTION_STRING
 
 const specs = swaggerJsDoc({
-    swaggerDefinition: swaggerDef,
-    apis: [
-      "swagger/*.yml",
-      "swagger/routes/*.swagger.js",
-    ],
-  });
-  
-  app.use("/api/v1/docs", swaggerUI.serve, swaggerUI.setup(specs));
+  swaggerDefinition: swaggerDef,
+  apis: [
+    "swagger/*.yml",
+    "swagger/routes/*.swagger.js",
+  ],
+});
+
+app.use("/api/v1/docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 app.use(cors())
@@ -55,9 +55,10 @@ app.use('/api/v1/summary', verifyJWT,)
 // app.use('/api/v1/products')
 
 mongoose.connect(connectionString).then(() => {
-    app.listen(port, () => {
-        console.log("server running on port : " + port)
-    })
+  console.log("MongoDB connected successfully");
+  app.listen(port, () => {
+    console.log("server running on port : " + port)
+  })
 }).catch((err) => {
-    console.log(err.message)
+  console.log("MongoDB connection failed: " + err.message)
 })
